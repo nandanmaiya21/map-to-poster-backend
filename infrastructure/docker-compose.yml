@@ -1,0 +1,101 @@
+services:
+  # =========================
+  # API GATEWAY
+  # =========================
+
+  gateway:
+    image: nginx:alpine
+    ports:
+      - "8080:80"
+    volumes:
+      - ./nginx/nginx.conf:/etc/nginx/nginx.conf:ro
+    depends_on:
+      - location-service
+      - map-service
+      - poster-service
+
+  # =========================
+  # REDIS
+  # =========================
+
+  redis:
+    image: redis:7-alpine
+    ports:
+      - "6379:6379"
+
+  # =========================
+  # POSTGIS
+  # =========================
+
+  postgres:
+    image: postgis/postgis:16-3.4
+    environment:
+      POSTGRES_DB: mapposter
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: postgres
+    ports:
+      - "5432:5432"
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+
+  # =========================
+  # LOCATION SERVICE
+  # =========================
+
+  location-service:
+    build: ../services/location-service
+    ports:
+      - "8001:8000"
+
+  # =========================
+  # MAP API
+  # =========================
+
+  map-service:
+    build: ../services/map-service
+    ports:
+      - "8002:8000"
+    environment:
+      REDIS_URL: redis://redis:6379/0
+      DATABASE_URL: postgresql://postgres:postgres@postgres:5432/mapposter
+    depends_on:
+      - redis
+      - postgres
+
+  # =========================
+  # MAP WORKER
+  # =========================
+
+  map-worker:
+    build: ../services/map-service
+    command: python -u -m app.workers.map_worker
+    environment:
+      REDIS_URL: redis://redis:6379/0
+      DATABASE_URL: postgresql://postgres:postgres@postgres:5432/mapposter
+      PYTHONUNBUFFERED: "1"
+    depends_on:
+      - redis
+      - postgres
+
+  # =========================
+  # POSTER SERVICE
+  # =========================
+
+  poster-service:
+    build:
+      context: ../services/poster-service
+
+    ports:
+      - "8003:8000"
+
+    volumes:
+      - poster_exports:/app/app/exports
+
+    depends_on:
+      - map-service
+
+    restart: unless-stopped
+
+volumes:
+  postgres_data:
+  poster_exports:
