@@ -182,6 +182,8 @@ async def render_map_poster(
         # RENDER POSTER
         # =====================================
 
+
+
         output_path = render_poster(
             map_id=map_id,
             map_data=map_data,

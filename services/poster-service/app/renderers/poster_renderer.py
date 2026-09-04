@@ -12,9 +12,14 @@ from matplotlib.collections import (
 from app.utils.map_bounds import (
     calculate_map_bounds,
 )
-from app.utils.map_zoom import (
-    apply_map_coverage,
+
+from app.utils.map_camera import (
+    apply_map_camera,
 )
+from app.layouts.poster_layout import (
+    get_layout,
+)
+import numpy as np
 
 EXPORT_DIR = "/app/app/exports"
 
@@ -32,6 +37,8 @@ def render_poster(
     """
     Render MapToPoster-style full canvas poster.
     """
+
+    layout = get_layout(settings.layout,)
 
     roads = map_data.get("roads", [])
     water = map_data.get("water", [])
@@ -65,17 +72,49 @@ def render_poster(
     )
 
     # =====================================
-    # SINGLE FULL-CANVAS AXIS
+    # MAP AXIS
     # =====================================
 
-    ax = figure.add_axes([
+    map_ax = figure.add_axes([
+        layout.map_left,
+        layout.map_bottom,
+        layout.map_width,
+        layout.map_height,
+    ])
+
+    map_ax.set_facecolor(
+        theme.background
+    )
+
+
+    # =====================================
+    # POSTER OVERLAY AXIS
+    #
+    # Used for typography and decorations
+    # =====================================
+
+    poster_ax = figure.add_axes([
         0,
         0,
         1,
         1,
     ])
 
-    ax.set_facecolor(
+    poster_ax.set_xlim(
+        0,
+        1,
+    )
+
+    poster_ax.set_ylim(
+        0,
+        1,
+    )
+
+    poster_ax.axis(
+        "off"
+    )
+
+    map_ax.set_facecolor(
         theme.background
     )
 
@@ -108,7 +147,7 @@ def render_poster(
             zorder=1,
         )
 
-        ax.add_collection(
+        map_ax.add_collection(
             water_collection
         )
 
@@ -141,7 +180,7 @@ def render_poster(
             zorder=2,
         )
 
-        ax.add_collection(
+        map_ax.add_collection(
             park_collection
         )
 
@@ -234,7 +273,7 @@ def render_poster(
             zorder=5,
         )
 
-        ax.add_collection(
+        map_ax.add_collection(
             roads_collection
         )
 
@@ -252,86 +291,117 @@ def render_poster(
     )
 
     # =====================================
-    # APPLY USER MAP COVERAGE
+    # APPLY MAP CAMERA
     # =====================================
 
-    xmin, xmax, ymin, ymax = apply_map_coverage(
-    xmin=xmin,
-    xmax=xmax,
-    ymin=ymin,
-    ymax=ymax,
-    coverage=settings.map_coverage,
-    )
+    xmin, xmax, ymin, ymax = apply_map_camera(
 
+        xmin=xmin,
+        xmax=xmax,
+
+        ymin=ymin,
+        ymax=ymax,
+
+        coverage=settings.map_coverage,
+
+        offset_x=settings.map_offset_x,
+
+        offset_y=settings.map_offset_y,
+    )
     # =====================================
     # APPLY MAP BOUNDS
     # =====================================
 
-    ax.set_xlim(
+    map_ax.set_xlim(
         xmin,
         xmax,
     )
 
-    ax.set_ylim(
+    # IMPORTANT:
+    # Map coordinates use screen-style Y coordinates.
+    # Smaller Y = visually higher.
+    map_ax.set_ylim(
         ymax,
         ymin,
     )
 
-    ax.set_aspect(
-    "equal",
-    adjustable="datalim",
+    map_ax.set_aspect(
+        "equal",
+        adjustable="datalim",
     )
 
-    ax.margins(0)
+    map_ax.margins(0)
 
-    ax.axis("off")
-
-
-    print(
-        "MAP BOUNDS:",
-        xmin,
-        xmax,
-        ymin,
-        ymax,
-        flush=True,
-    )
+    map_ax.axis("off")
 
 
+    # =====================================
+    # POSTER OVERLAY AXIS
+    # =====================================
+
+    overlay_ax = figure.add_axes([
+        0,
+        0,
+        1,
+        1,
+    ])
+
+    overlay_ax.set_xlim(0, 1)
+    overlay_ax.set_ylim(0, 1)
+
+    overlay_ax.axis("off")
 
     # =====================================
     # DIVIDER LINE
     # =====================================
 
-    ax.plot(
-        [0.40, 0.60],
-        [0.125, 0.125],
-        transform=ax.transAxes,
-        color=theme.text_primary,
-        linewidth=1.2,
-        alpha=0.9,
-        zorder=20,
-    )
+    if settings.show_divider:
 
-    # =====================================
-    # ADAPTIVE TITLE SIZE
-    # =====================================
+        poster_ax.plot(
+            [0.40, 0.60],
 
-    base_title_size = 42
+            [
+                layout.divider_y,
+                layout.divider_y,
+            ],
 
-    title_length = len(title)
+            color=theme.text_primary,
 
-    if title_length > 10:
+            linewidth=settings.divider_width,
 
-        scale = 10 / title_length
+            alpha=0.9,
 
-        title_size = max(
-            base_title_size * scale,
-            18,
+            zorder=30,
         )
+
+    
+
+    # =====================================
+    # TITLE SIZE
+    # =====================================
+
+    if settings.title_size:
+
+        title_size = settings.title_size
 
     else:
 
-        title_size = base_title_size
+        base_title_size = 42
+
+        title_length = len(title)
+
+        if title_length > 10:
+
+            scale = 10 / title_length
+
+            title_size = max(
+                base_title_size * scale,
+                18,
+            )
+
+        else:
+
+            title_size = base_title_size
 
     # =====================================
     # CITY TITLE
@@ -339,36 +409,45 @@ def render_poster(
 
     if settings.show_title and title:
 
-        ax.text(
+        poster_ax.text(
             0.5,
-            0.14,
+            layout.title_y,
             title.upper(),
-            transform=ax.transAxes,
+
+            transform=poster_ax.transAxes,
+
             color=theme.text_primary,
+
             ha="center",
             va="center",
-            fontsize=title_size,
-            fontname=theme.font_family,
-            fontweight="bold",
-            zorder=20,
-        )
 
+            fontsize=title_size,
+
+            fontname=theme.font_family,
+
+            fontweight=settings.font_weight,
+
+            zorder=30,
+        )
     # =====================================
     # COUNTRY / SUBTITLE
     # =====================================
 
     if settings.show_subtitle and subtitle:
+        subtitle_size = (
+        settings.subtitle_size
+        if settings.subtitle_size
+        else 18)
 
-        ax.text(
+        poster_ax.text(
             0.5,
-            0.10,
+            layout.subtitle_y,
             subtitle.upper(),
-            transform=ax.transAxes,
             color=theme.text_primary,
             alpha=0.85,
             ha="center",
             va="center",
-            fontsize=18,
+            fontsize=subtitle_size,
             fontname=theme.font_family,
             zorder=20,
         )
@@ -379,16 +458,20 @@ def render_poster(
 
     if settings.show_coordinates and coordinates:
 
-        ax.text(
+        coordinates_size = (
+        settings.coordinates_size
+        if settings.coordinates_size
+        else 13)
+
+        poster_ax.text(
             0.5,
-            0.07,
+            layout.coordinates_y,
             coordinates,
-            transform=ax.transAxes,
             color=theme.text_secondary,
             alpha=0.8,
             ha="center",
             va="center",
-            fontsize=13,
+            fontsize=coordinates_size,
             fontname=theme.font_family,
             zorder=20,
         )
@@ -399,18 +482,112 @@ def render_poster(
 
 
     if settings.show_attribution:
-        ax.text(
+        poster_ax.text(
             0.98,
             0.02,
+
             "© OpenStreetMap contributors",
-            transform=ax.transAxes,
+
             color=theme.text_secondary,
+
             alpha=0.5,
+
             ha="right",
             va="bottom",
+
             fontsize=7,
+
             fontname=theme.font_family,
+
             zorder=20,
+        )
+
+    # =====================================
+    # BOTTOM TYPOGRAPHY GRADIENT
+    # =====================================
+
+    gradient_height = settings.gradient_height
+    gradient_strength = settings.gradient_strength
+
+
+    if settings.show_bottom_gradient:
+
+        alpha = np.linspace(
+            gradient_strength,
+            0.0,
+            500,
+        ) ** 2.5
+
+        gradient = np.zeros(
+            (500, 1, 4)
+        )
+
+        bg_color = matplotlib.colors.to_rgba(
+            theme.background
+        )
+
+        gradient[:, 0, 0] = bg_color[0]
+        gradient[:, 0, 1] = bg_color[1]
+        gradient[:, 0, 2] = bg_color[2]
+        gradient[:, 0, 3] = alpha
+
+        overlay_ax.imshow(
+            gradient,
+
+            extent=(
+                0,
+                1,
+                0,
+                gradient_height,
+            ),
+
+            origin="lower",
+
+            aspect="auto",
+
+            zorder=10,
+        )
+    # =====================================
+    # TOP MAP GRADIENT
+    # =====================================
+
+
+    if settings.show_top_gradient:
+
+        alpha = np.linspace(
+            0.0,
+            gradient_strength,
+            500,
+        ) ** 2.5
+
+        gradient = np.zeros(
+            (500, 1, 4)
+        )
+
+        bg_color = matplotlib.colors.to_rgba(
+            theme.background
+        )
+
+        gradient[:, 0, 0] = bg_color[0]
+        gradient[:, 0, 1] = bg_color[1]
+        gradient[:, 0, 2] = bg_color[2]
+        gradient[:, 0, 3] = alpha
+
+        overlay_ax.imshow(
+            gradient,
+
+            extent=(
+                0,
+                1,
+                1 - gradient_height,
+                1,
+            ),
+
+            origin="lower",
+
+            aspect="auto",
+
+            zorder=10,
         )
 
     # =====================================
