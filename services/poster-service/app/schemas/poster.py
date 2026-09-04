@@ -1,32 +1,66 @@
-from typing import List, Optional
+from typing import Optional, Literal
 
 from pydantic import BaseModel
 
 
-class Road(BaseModel):
-    type: str
-    coordinates: List[List[float]]
+class PosterRenderRequest(BaseModel):
+
+    # =====================================
+    # THEME
+    # =====================================
+
+    theme: str
 
 
-class PolygonFeature(BaseModel):
-    coordinates: List[List[float]]
+    # =====================================
+    # TEXT
+    # =====================================
+
+    title: str = "UNKNOWN"
+
+    subtitle: str = ""
+
+    coordinates: str = ""
 
 
-class MapData(BaseModel):
-    roads: List[Road] = []
-    water: List[PolygonFeature] = []
-    parks: List[PolygonFeature] = []
+    # =====================================
+    # POSTER SIZE
+    # =====================================
+
+    width: Optional[int] = None
+
+    height: Optional[int] = None
+
+    dpi: Optional[int] = None
 
 
-class PosterRequest(BaseModel):
-    map_id: str
+    # =====================================
+    # MAP SETTINGS
+    # =====================================
 
-    city: str = "Unknown"
-    country: str = "Unknown"
+    map_padding: float = 0.02
 
-    latitude: float
-    longitude: float
+    map_coverage: float = 1.0
 
-    theme: str = "minimal"
 
-    data: MapData
+    # =====================================
+    # DISPLAY OPTIONS
+    # =====================================
+
+    show_title: bool = True
+
+    show_subtitle: bool = True
+
+    show_coordinates: bool = True
+
+    show_attribution: bool = True
+
+
+    # =====================================
+    # LAYOUT
+    # =====================================
+
+    layout: Literal[
+        "full",
+        "bottom"
+    ] = "full"

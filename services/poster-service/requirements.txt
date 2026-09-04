@@ -1,5 +1,7 @@
 fastapi
-uvicorn[standard]
-matplotlib
-pydantic
+uvicorn
 httpx
+matplotlib
+sqlalchemy
+psycopg2-binary
+numpy
