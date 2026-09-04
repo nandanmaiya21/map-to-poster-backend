@@ -49,4 +49,6 @@ def build_render_settings(
 
         # Layout
         layout=request.layout,
+        #Export
+        export_format=request.export_format,
     )

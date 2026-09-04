@@ -39,3 +39,5 @@ class RenderSettings:
 
     # Layout
     layout: str
+    # Export
+    export_format: str

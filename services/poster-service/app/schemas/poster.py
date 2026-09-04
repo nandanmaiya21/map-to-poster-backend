@@ -101,3 +101,14 @@ class PosterRenderRequest(BaseModel):
         "center",
         "top",
     ] = "full"
+
+
+    # =====================================
+    # EXPORT
+    # =====================================
+
+    export_format: Literal[
+        "png",
+        "svg",
+        "pdf",
+    ] = "png"
