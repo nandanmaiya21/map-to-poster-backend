@@ -1,0 +1,452 @@
+{
+  "services/location-service/app/main.py": {
+    "mtime": 1788446687.0581875,
+    "seen": 1789143840.4667923,
+    "ast_hash": "0022063919c70f8df192aeddd3734420",
+    "semantic_hash": "0022063919c70f8df192aeddd3734420"
+  },
+  "services/map-service/app/__init__.py": {
+    "mtime": 1788450938.6497076,
+    "seen": 1789143840.4667976,
+    "ast_hash": "d41d8cd98f00b204e9800998ecf8427e",
+    "semantic_hash": "d41d8cd98f00b204e9800998ecf8427e"
+  },
+  "services/map-service/app/cache/map_cache.py": {
+    "mtime": 1788488895.8545861,
+    "seen": 1789143840.4668002,
+    "ast_hash": "ff91c17c3568d5f7898035708b9204e3",
+    "semantic_hash": "ff91c17c3568d5f7898035708b9204e3"
+  },
+  "services/map-service/app/database.py": {
+    "mtime": 1788623698.6172535,
+    "seen": 1789143840.4668014,
+    "ast_hash": "ab5e86f9864de225c7ca87e54ac995da",
+    "semantic_hash": "ab5e86f9864de225c7ca87e54ac995da"
+  },
+  "services/map-service/app/geometry/__init__.py": {
+    "mtime": 1788453325.1880558,
+    "seen": 1789143840.4668024,
+    "ast_hash": "d41d8cd98f00b204e9800998ecf8427e",
+    "semantic_hash": "d41d8cd98f00b204e9800998ecf8427e"
+  },
+  "services/map-service/app/geometry/features.py": {
+    "mtime": 1788454263.615692,
+    "seen": 1789143840.4668038,
+    "ast_hash": "61a85d74737ceea891e1af183e396980",
+    "semantic_hash": "61a85d74737ceea891e1af183e396980"
+  },
+  "services/map-service/app/geometry/normalize.py": {
+    "mtime": 1788488387.2728517,
+    "seen": 1789143840.466805,
+    "ast_hash": "2b510cb51c84958ef131b2d0d607a6c1",
+    "semantic_hash": "2b510cb51c84958ef131b2d0d607a6c1"
+  },
+  "services/map-service/app/geometry/optimizer.py": {
+    "mtime": 1788489686.1496766,
+    "seen": 1789143840.4668062,
+    "ast_hash": "33cebf0983c1e978651736dc94bafd70",
+    "semantic_hash": "33cebf0983c1e978651736dc94bafd70"
+  },
+  "services/map-service/app/geometry/processor.py": {
+    "mtime": 1788489797.6246572,
+    "seen": 1789143840.4668074,
+    "ast_hash": "94d8e5cd65e44c9a0ac9c453e920a0b6",
+    "semantic_hash": "94d8e5cd65e44c9a0ac9c453e920a0b6"
+  },
+  "services/map-service/app/geometry/projection.py": {
+    "mtime": 1788489799.83977,
+    "seen": 1789143840.4668086,
+    "ast_hash": "dbd090cc469539ec132bf61d313be54f",
+    "semantic_hash": "dbd090cc469539ec132bf61d313be54f"
+  },
+  "services/map-service/app/geometry/road_styles.py": {
+    "mtime": 1788489801.828606,
+    "seen": 1789143840.4668095,
+    "ast_hash": "620f1c94a8e3972f5aa6636d26952424",
+    "semantic_hash": "620f1c94a8e3972f5aa6636d26952424"
+  },
+  "services/map-service/app/geometry/roads.py": {
+    "mtime": 1788489803.5109303,
+    "seen": 1789143840.4668112,
+    "ast_hash": "a6a03a60b32441b33fb0c355e87b02f6",
+    "semantic_hash": "a6a03a60b32441b33fb0c355e87b02f6"
+  },
+  "services/map-service/app/geometry/transform.py": {
+    "mtime": 1788488323.866655,
+    "seen": 1789143840.4668124,
+    "ast_hash": "38806fb90cf676fc9df59c3e933892ae",
+    "semantic_hash": "38806fb90cf676fc9df59c3e933892ae"
+  },
+  "services/map-service/app/init_db.py": {
+    "mtime": 1788487816.8816295,
+    "seen": 1789143840.4668138,
+    "ast_hash": "65cfe045806a07b3905f46cbb66d6672",
+    "semantic_hash": "65cfe045806a07b3905f46cbb66d6672"
+  },
+  "services/map-service/app/main.py": {
+    "mtime": 1788536807.2553377,
+    "seen": 1789143840.466815,
+    "ast_hash": "d38fb48300868aa4dc72d1028d550ca4",
+    "semantic_hash": "d38fb48300868aa4dc72d1028d550ca4"
+  },
+  "services/map-service/app/models/__init__.py": {
+    "mtime": 1788486973.898759,
+    "seen": 1789143840.4668162,
+    "ast_hash": "d41d8cd98f00b204e9800998ecf8427e",
+    "semantic_hash": "d41d8cd98f00b204e9800998ecf8427e"
+  },
+  "services/map-service/app/models/map.py": {
+    "mtime": 1788487787.6666496,
+    "seen": 1789143840.4668174,
+    "ast_hash": "8674f71767f1f055e86439cbb83872e1",
+    "semantic_hash": "8674f71767f1f055e86439cbb83872e1"
+  },
+  "services/map-service/app/osm/_init__.py": {
+    "mtime": 1788450947.38993,
+    "seen": 1789143840.4668186,
+    "ast_hash": "d41d8cd98f00b204e9800998ecf8427e",
+    "semantic_hash": "d41d8cd98f00b204e9800998ecf8427e"
+  },
+  "services/map-service/app/osm/bounds.py": {
+    "mtime": 1788452541.1408079,
+    "seen": 1789143840.4668195,
+    "ast_hash": "ed075649f607a0b62fd68f20c80633f2",
+    "semantic_hash": "ed075649f607a0b62fd68f20c80633f2"
+  },
+  "services/map-service/app/osm/client.py": {
+    "mtime": 1788488688.5969315,
+    "seen": 1789143840.4668212,
+    "ast_hash": "a2ce602ce1618f754f2d82109b4fe884",
+    "semantic_hash": "a2ce602ce1618f754f2d82109b4fe884"
+  },
+  "services/map-service/app/osm/endpoints.py": {
+    "mtime": 1788488619.2101316,
+    "seen": 1789143840.4668221,
+    "ast_hash": "990dd780b17b12aeac3064f2d62d258e",
+    "semantic_hash": "990dd780b17b12aeac3064f2d62d258e"
+  },
+  "services/map-service/app/osm/queries.py": {
+    "mtime": 1788452513.1517813,
+    "seen": 1789143840.466823,
+    "ast_hash": "25320ed4892b32031a3139c49280bdf8",
+    "semantic_hash": "25320ed4892b32031a3139c49280bdf8"
+  },
+  "services/map-service/app/processors/__init__.py": {
+    "mtime": 1788450956.0022438,
+    "seen": 1789143840.4668248,
+    "ast_hash": "d41d8cd98f00b204e9800998ecf8427e",
+    "semantic_hash": "d41d8cd98f00b204e9800998ecf8427e"
+  },
+  "services/map-service/app/processors/geometry.py": {
+    "mtime": 1788450546.3622098,
+    "seen": 1789143840.466826,
+    "ast_hash": "d41d8cd98f00b204e9800998ecf8427e",
+    "semantic_hash": "d41d8cd98f00b204e9800998ecf8427e"
+  },
+  "services/map-service/app/processors/roads.py": {
+    "mtime": 1788450526.553715,
+    "seen": 1789143840.4668272,
+    "ast_hash": "d41d8cd98f00b204e9800998ecf8427e",
+    "semantic_hash": "d41d8cd98f00b204e9800998ecf8427e"
+  },
+  "services/map-service/app/processors/water.py": {
+    "mtime": 1788450534.1436615,
+    "seen": 1789143840.4668283,
+    "ast_hash": "d41d8cd98f00b204e9800998ecf8427e",
+    "semantic_hash": "d41d8cd98f00b204e9800998ecf8427e"
+  },
+  "services/map-service/app/queue.py": {
+    "mtime": 1788486771.331503,
+    "seen": 1789143840.4668295,
+    "ast_hash": "33ab3b0c6aec9c69694e656e9084840f",
+    "semantic_hash": "33ab3b0c6aec9c69694e656e9084840f"
+  },
+  "services/map-service/app/schemas.py": {
+    "mtime": 1788451734.3735197,
+    "seen": 1789143840.4668307,
+    "ast_hash": "bde0d5d5a883b1dfc153c176fe05e621",
+    "semantic_hash": "bde0d5d5a883b1dfc153c176fe05e621"
+  },
+  "services/map-service/app/utils/loader.py": {
+    "mtime": 1788455374.5022295,
+    "seen": 1789143840.466832,
+    "ast_hash": "97dc0619b84ee4aa3abbe5195f576a88",
+    "semantic_hash": "97dc0619b84ee4aa3abbe5195f576a88"
+  },
+  "services/map-service/app/workers/__init__.py": {
+    "mtime": 1788450963.5808375,
+    "seen": 1789143840.466833,
+    "ast_hash": "d41d8cd98f00b204e9800998ecf8427e",
+    "semantic_hash": "d41d8cd98f00b204e9800998ecf8427e"
+  },
+  "services/map-service/app/workers/map_worker.py": {
+    "mtime": 1788488911.6832252,
+    "seen": 1789143840.466834,
+    "ast_hash": "80e38ca3979bf055d5a63653cc57e9a0",
+    "semantic_hash": "80e38ca3979bf055d5a63653cc57e9a0"
+  },
+  "services/poster-service/app/__init__.py": {
+    "mtime": 1788490452.7807267,
+    "seen": 1789143840.4668355,
+    "ast_hash": "d41d8cd98f00b204e9800998ecf8427e",
+    "semantic_hash": "d41d8cd98f00b204e9800998ecf8427e"
+  },
+  "services/poster-service/app/clients/__init__.py": {
+    "mtime": 1788491355.4252896,
+    "seen": 1789143840.4668365,
+    "ast_hash": "d41d8cd98f00b204e9800998ecf8427e",
+    "semantic_hash": "d41d8cd98f00b204e9800998ecf8427e"
+  },
+  "services/poster-service/app/clients/map_client.py": {
+    "mtime": 1788491353.6251519,
+    "seen": 1789143840.4668376,
+    "ast_hash": "7fd9d6a54c5be9a6a6efb6c5d7a097fa",
+    "semantic_hash": "7fd9d6a54c5be9a6a6efb6c5d7a097fa"
+  },
+  "services/poster-service/app/database.py": {
+    "mtime": 1788557660.791742,
+    "seen": 1789143840.4668388,
+    "ast_hash": "1cee74b3b13363fbbcc7be159e3f29db",
+    "semantic_hash": "1cee74b3b13363fbbcc7be159e3f29db"
+  },
+  "services/poster-service/app/layouts/__init__.py": {
+    "mtime": 1788534969.363937,
+    "seen": 1789143840.4668398,
+    "ast_hash": "d41d8cd98f00b204e9800998ecf8427e",
+    "semantic_hash": "d41d8cd98f00b204e9800998ecf8427e"
+  },
+  "services/poster-service/app/layouts/poster_layout.py": {
+    "mtime": 1788558149.1827703,
+    "seen": 1789143840.466841,
+    "ast_hash": "83bfa7b96e219e77ed62427b7328239e",
+    "semantic_hash": "83bfa7b96e219e77ed62427b7328239e"
+  },
+  "services/poster-service/app/main.py": {
+    "mtime": 1788562662.9634097,
+    "seen": 1789143840.4668422,
+    "ast_hash": "d391f1c4df5c1160b0f769c102fd86eb",
+    "semantic_hash": "d391f1c4df5c1160b0f769c102fd86eb"
+  },
+  "services/poster-service/app/models/base.py": {
+    "mtime": 1788623698.616264,
+    "seen": 1789143840.4668434,
+    "ast_hash": "0ae3d14130c0e1c8c68a3fb63de9ce56",
+    "semantic_hash": "0ae3d14130c0e1c8c68a3fb63de9ce56"
+  },
+  "services/poster-service/app/models/theme.py": {
+    "mtime": 1788537618.7816768,
+    "seen": 1789143840.4668443,
+    "ast_hash": "5ea95088cc41fec56c1272818050126e",
+    "semantic_hash": "5ea95088cc41fec56c1272818050126e"
+  },
+  "services/poster-service/app/renderers/__init__.py": {
+    "mtime": 1788490487.1219237,
+    "seen": 1789143840.4668458,
+    "ast_hash": "d41d8cd98f00b204e9800998ecf8427e",
+    "semantic_hash": "d41d8cd98f00b204e9800998ecf8427e"
+  },
+  "services/poster-service/app/renderers/map_renderer.py": {
+    "mtime": 1788490575.9501407,
+    "seen": 1789143840.4668467,
+    "ast_hash": "b194ed737114af7b6409605e6417acd8",
+    "semantic_hash": "b194ed737114af7b6409605e6417acd8"
+  },
+  "services/poster-service/app/renderers/poster_renderer.py": {
+    "mtime": 1788562621.9847562,
+    "seen": 1789143840.466848,
+    "ast_hash": "040827b0524bcaadfd7283093503952c",
+    "semantic_hash": "040827b0524bcaadfd7283093503952c"
+  },
+  "services/poster-service/app/renderers/road_renderer.py": {
+    "mtime": 1788562087.5788052,
+    "seen": 1789143840.4668498,
+    "ast_hash": "88e62bf35ea3ed5c3a7ea1491000788b",
+    "semantic_hash": "88e62bf35ea3ed5c3a7ea1491000788b"
+  },
+  "services/poster-service/app/routes/__init__.py": {
+    "mtime": 1788539894.8054776,
+    "seen": 1789143840.4668508,
+    "ast_hash": "d41d8cd98f00b204e9800998ecf8427e",
+    "semantic_hash": "d41d8cd98f00b204e9800998ecf8427e"
+  },
+  "services/poster-service/app/routes/themes.py": {
+    "mtime": 1788557666.7927594,
+    "seen": 1789143840.4668522,
+    "ast_hash": "59fa822471f70b14f3279285c1a0ed81",
+    "semantic_hash": "59fa822471f70b14f3279285c1a0ed81"
+  },
+  "services/poster-service/app/schemas/__init__.py": {
+    "mtime": 1788490467.584912,
+    "seen": 1789143840.4668531,
+    "ast_hash": "d41d8cd98f00b204e9800998ecf8427e",
+    "semantic_hash": "d41d8cd98f00b204e9800998ecf8427e"
+  },
+  "services/poster-service/app/schemas/poster.py": {
+    "mtime": 1788562434.466171,
+    "seen": 1789143840.466854,
+    "ast_hash": "e1f5b018745554f7f75f02b8c1e26e2b",
+    "semantic_hash": "e1f5b018745554f7f75f02b8c1e26e2b"
+  },
+  "services/poster-service/app/schemas/render_settings.py": {
+    "mtime": 1788562513.5885978,
+    "seen": 1789143840.4668555,
+    "ast_hash": "6bb44d9b6ec952e0846fabb9882ca176",
+    "semantic_hash": "6bb44d9b6ec952e0846fabb9882ca176"
+  },
+  "services/poster-service/app/schemas/render_theme.py": {
+    "mtime": 1788557656.1529791,
+    "seen": 1789143840.4668565,
+    "ast_hash": "4d3c67d56de2e9ffd5c83783474c037a",
+    "semantic_hash": "4d3c67d56de2e9ffd5c83783474c037a"
+  },
+  "services/poster-service/app/schemas/theme.py": {
+    "mtime": 1788537201.868697,
+    "seen": 1789143840.4668574,
+    "ast_hash": "d3140da335dc78abfb822e0f445b61c9",
+    "semantic_hash": "d3140da335dc78abfb822e0f445b61c9"
+  },
+  "services/poster-service/app/security/__init__.py": {
+    "mtime": 1788539892.470345,
+    "seen": 1789143840.4668584,
+    "ast_hash": "d41d8cd98f00b204e9800998ecf8427e",
+    "semantic_hash": "d41d8cd98f00b204e9800998ecf8427e"
+  },
+  "services/poster-service/app/security/admin.py": {
+    "mtime": 1788539891.4769063,
+    "seen": 1789143840.4668598,
+    "ast_hash": "20e5e90262de4a15ee3397df6f8f2d7b",
+    "semantic_hash": "20e5e90262de4a15ee3397df6f8f2d7b"
+  },
+  "services/poster-service/app/services/export_engine.py": {
+    "mtime": 1788562666.9900544,
+    "seen": 1789143840.4668608,
+    "ast_hash": "bac7c2a1782a53c3528b87d551e38512",
+    "semantic_hash": "bac7c2a1782a53c3528b87d551e38512"
+  },
+  "services/poster-service/app/services/render_settings.py": {
+    "mtime": 1788562546.416683,
+    "seen": 1789143840.466862,
+    "ast_hash": "14b94365d6f61d1982b62c78266ce4da",
+    "semantic_hash": "14b94365d6f61d1982b62c78266ce4da"
+  },
+  "services/poster-service/app/services/theme_adapter.py": {
+    "mtime": 1788557659.4142666,
+    "seen": 1789143840.4668632,
+    "ast_hash": "813c9d36d1a2f9217f466822d7099095",
+    "semantic_hash": "813c9d36d1a2f9217f466822d7099095"
+  },
+  "services/poster-service/app/styles/road_style.py": {
+    "mtime": 1788562004.6275475,
+    "seen": 1789143840.4668643,
+    "ast_hash": "90f02762d38bdd6c56eb7ddac2759247",
+    "semantic_hash": "90f02762d38bdd6c56eb7ddac2759247"
+  },
+  "services/poster-service/app/themes/__init__.py": {
+    "mtime": 1788490509.1064465,
+    "seen": 1789143840.4668658,
+    "ast_hash": "d41d8cd98f00b204e9800998ecf8427e",
+    "semantic_hash": "d41d8cd98f00b204e9800998ecf8427e"
+  },
+  "services/poster-service/app/themes/loader.py": {
+    "mtime": 1788534970.9024704,
+    "seen": 1789143840.4668667,
+    "ast_hash": "89ef36c9c9970877343e6a6ecf3dc224",
+    "semantic_hash": "89ef36c9c9970877343e6a6ecf3dc224"
+  },
+  "services/poster-service/app/themes/presets.py": {
+    "mtime": 1788534973.0976808,
+    "seen": 1789143840.4668677,
+    "ast_hash": "fa3fef2b5e48418e9223eed86f35c7a2",
+    "semantic_hash": "fa3fef2b5e48418e9223eed86f35c7a2"
+  },
+  "services/poster-service/app/themes/registry.py": {
+    "mtime": 1788535267.9161015,
+    "seen": 1789143840.4668689,
+    "ast_hash": "032d40a3f15ee5e17cf37b71ded78670",
+    "semantic_hash": "032d40a3f15ee5e17cf37b71ded78670"
+  },
+  "services/poster-service/app/themes/schema.py": {
+    "mtime": 1788535266.6986072,
+    "seen": 1789143840.46687,
+    "ast_hash": "dae4e14d3f4be86abb502d6e2ddab972",
+    "semantic_hash": "dae4e14d3f4be86abb502d6e2ddab972"
+  },
+  "services/poster-service/app/themes/service.py": {
+    "mtime": 1788536070.3600328,
+    "seen": 1789143840.4668713,
+    "ast_hash": "d3b51d986234e4c05ac2a3f2762ebf54",
+    "semantic_hash": "d3b51d986234e4c05ac2a3f2762ebf54"
+  },
+  "services/poster-service/app/typography/__init__.py": {
+    "mtime": 1788559061.2133405,
+    "seen": 1789143840.4668722,
+    "ast_hash": "d41d8cd98f00b204e9800998ecf8427e",
+    "semantic_hash": "d41d8cd98f00b204e9800998ecf8427e"
+  },
+  "services/poster-service/app/typography/typography_engine.py": {
+    "mtime": 1788559059.416625,
+    "seen": 1789143840.4668736,
+    "ast_hash": "1f6e88c2395fb6628963b39abdf204ba",
+    "semantic_hash": "1f6e88c2395fb6628963b39abdf204ba"
+  },
+  "services/poster-service/app/utils/map_bounds.py": {
+    "mtime": 1788541407.8656063,
+    "seen": 1789143840.4668746,
+    "ast_hash": "9b65438cd25e036fc3eaba82edfd43b3",
+    "semantic_hash": "9b65438cd25e036fc3eaba82edfd43b3"
+  },
+  "services/poster-service/app/utils/map_camera.py": {
+    "mtime": 1788551736.0487406,
+    "seen": 1789143840.4668758,
+    "ast_hash": "83386fe0fcaffe808cd8756ab0289f6b",
+    "semantic_hash": "83386fe0fcaffe808cd8756ab0289f6b"
+  },
+  "services/poster-service/app/utils/map_zoom.py": {
+    "mtime": 1788548168.092644,
+    "seen": 1789143840.466877,
+    "ast_hash": "1960ccb49fa262ea3f03feb78a612692",
+    "semantic_hash": "1960ccb49fa262ea3f03feb78a612692"
+  },
+  "services/poster-service/app/utils/map_zoom_scale.py": {
+    "mtime": 1788561922.2885003,
+    "seen": 1789143840.4668782,
+    "ast_hash": "6e28e7cee61a041801c454ebf060e7ea",
+    "semantic_hash": "6e28e7cee61a041801c454ebf060e7ea"
+  },
+  ".postman/resources.yaml": {
+    "mtime": 1788493612.874218,
+    "seen": 1789143840.4668791,
+    "ast_hash": "685f16320bcaa77b61423c944ef8787c",
+    "semantic_hash": "685f16320bcaa77b61423c944ef8787c"
+  },
+  "infrastructure/docker-compose.yml": {
+    "mtime": 1788821952.6691554,
+    "seen": 1789143840.4668806,
+    "ast_hash": "2cdf828c62643e7a0408577f9bc233bb",
+    "semantic_hash": "2cdf828c62643e7a0408577f9bc233bb"
+  },
+  "postman/globals/workspace.globals.yaml": {
+    "mtime": 1788449241.8428497,
+    "seen": 1789143840.4668815,
+    "ast_hash": "1f31f0e4d6a7b594d17c1e596c93528c",
+    "semantic_hash": "1f31f0e4d6a7b594d17c1e596c93528c"
+  },
+  "services/location-service/requirements.txt": {
+    "mtime": 1788446853.4640467,
+    "seen": 1789143840.4668827,
+    "ast_hash": "e1319c6ac707f4c18a2dc646d19e16f7",
+    "semantic_hash": "e1319c6ac707f4c18a2dc646d19e16f7"
+  },
+  "services/map-service/requirements.txt": {
+    "mtime": 1788487638.9858117,
+    "seen": 1789143840.4668841,
+    "ast_hash": "252f44a84c755ef92a1e8c258f27bb93",
+    "semantic_hash": "252f44a84c755ef92a1e8c258f27bb93"
+  },
+  "services/poster-service/requirements.txt": {
+    "mtime": 1788541428.0878632,
+    "seen": 1789143840.466885,
+    "ast_hash": "79fc2eaa57f48e5bb4cf812b384523e5",
+    "semantic_hash": "79fc2eaa57f48e5bb4cf812b384523e5"
+  }
+}

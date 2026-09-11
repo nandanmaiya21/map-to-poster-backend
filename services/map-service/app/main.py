@@ -1,4 +1,5 @@
 from fastapi import FastAPI, HTTPException
+from sqlalchemy import func
 from uuid import uuid4
 
 from app.schemas import MapRequest
@@ -7,6 +8,8 @@ from app.init_db import init_db
 
 from app.database import SessionLocal
 from app.models.map import Map
+from app.geometry.boundary import build_map_boundary
+from app.clients.location_client import reverse_geocode_city
 
 
 app = FastAPI(
@@ -29,20 +32,71 @@ async def health():
 @app.post("/generate")
 async def generate_map(request: MapRequest):
 
-    map_id = str(uuid4())
-
     # Create database session
     db = SessionLocal()
 
     try:
 
+        # 0. Does this GPS point already fall inside a map we've
+        # generated before? Compare against the stored coverage
+        # boundary via PostGIS, not against exact coordinates.
+        existing_map = (
+            db.query(Map)
+            .filter(Map.status == "completed")
+            .filter(Map.boundary.isnot(None))
+            .filter(
+                func.ST_Contains(
+                    Map.boundary,
+                    func.ST_SetSRID(
+                        func.ST_MakePoint(
+                            request.longitude,
+                            request.latitude,
+                        ),
+                        4326,
+                    ),
+                )
+            )
+            .first()
+        )
+
+        if existing_map:
+
+            return {
+                "map_id": existing_map.id,
+                "status": existing_map.status,
+                "reused": True,
+            }
+
+        map_id = str(uuid4())
+
+        # Resolve the point to a city so the worker can fetch the
+        # whole city (clipped to its real boundary) instead of just
+        # a radius bbox. Falls back to radius-based generation below
+        # if this can't be resolved - reverse_geocode_city returns
+        # None rather than raising in that case.
+        place = await reverse_geocode_city(
+            request.latitude,
+            request.longitude,
+        )
+
         # 1. Create map record in PostgreSQL
+        #
+        # boundary starts as the radius bbox as an immediate
+        # safety net (so this map can already be matched by other
+        # requests while the job is still processing); the worker
+        # overwrites it with the real city boundary once a
+        # place-based generation succeeds.
         new_map = Map(
             id=map_id,
             status="processing",
             latitude=request.latitude,
             longitude=request.longitude,
             radius=request.radius,
+            boundary=build_map_boundary(
+                request.latitude,
+                request.longitude,
+                request.radius,
+            ),
         )
 
         db.add(new_map)
@@ -55,6 +109,7 @@ async def generate_map(request: MapRequest):
             "latitude": request.latitude,
             "longitude": request.longitude,
             "radius": request.radius,
+            "place": place,
             "attempt": 0,
             "max_attempts": 3,
         }
@@ -65,6 +120,7 @@ async def generate_map(request: MapRequest):
         return {
             "map_id": map_id,
             "status": "processing",
+            "reused": False,
         }
 
     except Exception as error:

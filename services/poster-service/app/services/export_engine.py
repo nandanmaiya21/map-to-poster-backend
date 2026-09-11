@@ -18,6 +18,7 @@ def export_poster(
     export_format: str,
     dpi: int,
     background_color: str,
+    render_signature: str = "",
 ):
     """
     Export poster figure in requested format.
@@ -46,10 +47,24 @@ def export_poster(
 
     # =====================================
     # BUILD FILENAME
+    #
+    # render_signature makes the filename vary
+    # with the render settings (layout, coverage,
+    # offsets, gradients, text, ...). Without it,
+    # two renders of the same map+theme but
+    # different settings share one URL, so clients
+    # that cache images by URL (e.g. Flutter's
+    # Image.network) keep showing the stale one.
     # =====================================
 
+    suffix = (
+        f"_{render_signature}"
+        if render_signature
+        else ""
+    )
+
     filename = (
-        f"{map_id}_{theme_slug}.{export_format}"
+        f"{map_id}_{theme_slug}{suffix}.{export_format}"
     )
 
     output_path = os.path.join(

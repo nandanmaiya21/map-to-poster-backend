@@ -58,9 +58,11 @@ services:
     environment:
       REDIS_URL: redis://redis:6379/0
       DATABASE_URL: postgresql://postgres:postgres@postgres:5432/mapposter
+      LOCATION_SERVICE_URL: http://location-service:8000
     depends_on:
       - redis
       - postgres
+      - location-service
 
   # =========================
   # MAP WORKER

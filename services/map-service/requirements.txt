@@ -2,6 +2,7 @@ fastapi
 uvicorn[standard]
 pydantic
 redis>=5.0.0
+httpx
 
 osmnx==2.0.7
 geopandas
@@ -9,3 +10,4 @@ shapely
 networkx
 sqlalchemy
 psycopg2-binary
+geoalchemy2

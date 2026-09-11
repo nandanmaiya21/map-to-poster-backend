@@ -187,3 +187,98 @@ def fetch_park_features(
         operation,
         "park features",
     )
+
+
+# ==========================================
+# WHOLE-CITY FETCH (by place name)
+#
+# Unlike the point+radius functions above,
+# these clip to the real administrative
+# boundary OSM has for the place, not a bbox.
+# ==========================================
+
+def fetch_city_boundary(place_name):
+    """
+    Returns a GeoDataFrame (one row) with the place's real
+    administrative boundary polygon/multipolygon, via Nominatim -
+    not an Overpass endpoint, so no endpoint fallback here.
+    """
+
+    print(
+        f"Downloading city boundary for {place_name}",
+        flush=True,
+    )
+
+    return ox.geocode_to_gdf(place_name)
+
+
+def fetch_street_network_for_place(
+    place_name,
+):
+
+    print(
+        f"Downloading street network for {place_name}",
+        flush=True,
+    )
+
+    def operation():
+
+        return ox.graph_from_place(
+            place_name,
+            network_type="all",
+            truncate_by_edge=True,
+        )
+
+    return execute_with_fallback(
+        operation,
+        "street network (place)",
+    )
+
+
+def fetch_water_features_for_place(
+    place_name,
+):
+
+    print(
+        f"Downloading water features for {place_name}",
+        flush=True,
+    )
+
+    def operation():
+
+        return ox.features_from_place(
+            place_name,
+            tags={
+                "natural": "water",
+                "waterway": True,
+            },
+        )
+
+    return execute_with_fallback(
+        operation,
+        "water features (place)",
+    )
+
+
+def fetch_park_features_for_place(
+    place_name,
+):
+
+    print(
+        f"Downloading park features for {place_name}",
+        flush=True,
+    )
+
+    def operation():
+
+        return ox.features_from_place(
+            place_name,
+            tags={
+                "leisure": "park",
+            },
+        )
+
+    return execute_with_fallback(
+        operation,
+        "park features (place)",
+    )

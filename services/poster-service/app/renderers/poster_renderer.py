@@ -1,4 +1,7 @@
+import hashlib
 import os
+from dataclasses import asdict
+
 import matplotlib
 
 matplotlib.use("Agg")
@@ -685,6 +688,20 @@ def render_poster(
         )
     )
 
+    # Distinguishes this render's output file/URL from any other
+    # render of the same map+theme with different settings (layout,
+    # coverage, offsets, gradients, text, ...) - see export_engine.
+    render_signature = hashlib.sha256(
+        repr(
+            (
+                asdict(settings),
+                title,
+                subtitle,
+                coordinates,
+            )
+        ).encode("utf-8")
+    ).hexdigest()[:10]
+
     output_path = export_poster(
 
         figure=figure,
@@ -698,6 +715,8 @@ def render_poster(
         dpi=settings.dpi,
 
         background_color=theme.background,
+
+        render_signature=render_signature,
     )
 
 
